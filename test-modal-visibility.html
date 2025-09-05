@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modal Test</title>
+    <style>
+        .test-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+        }
+        @media (min-width: 768px) {
+            .md\\:hidden {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Modal Visibility Test</h1>
+    <p>This tests if the modal CSS classes work correctly.</p>
+    
+    <div class="test-modal md:hidden">
+        <div class="modal-content">
+            <h2>Test Modal</h2>
+            <p>If you can see this on mobile but not desktop, the classes work.</p>
+            <button onclick="this.parentElement.parentElement.style.display='none'">Close</button>
+        </div>
+    </div>
+    
+    <button onclick="document.querySelector('.test-modal').style.display='flex'">Show Modal</button>
+</body>
+</html>
