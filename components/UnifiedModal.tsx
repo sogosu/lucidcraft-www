@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 export type ModalType = 'contact' | 'privacy' | 'terms';
 
 interface UnifiedModalProps {
@@ -10,50 +8,8 @@ interface UnifiedModalProps {
   type: ModalType;
 }
 
-// Contact form component
+// Contact information component
 function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <div>
       {/* Company info */}
@@ -81,122 +37,47 @@ function ContactForm() {
         </p>
       </div>
 
-      {/* Contact Form */}
-      <form onSubmit={handleSubmit} className="space-y-6" style={{ marginTop: '20px' }}>
-        <div style={{ marginTop: '20px' }}>
-          <label 
-            htmlFor="name" 
-            className="block text-white text-sm font-medium mb-2"
+      {/* Contact Information */}
+      <div className="space-y-6" style={{ marginTop: '40px' }}>
+        <div className="text-center">
+          <h4 
+            className="text-white text-lg font-medium mb-4"
             style={{ 
               fontFamily: '"Inter", sans-serif',
               textShadow: '0 1px 2px rgba(0,0,0,0.5)'
             }}
           >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            className="w-full bg-white/20 border border-white/40 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 focus:bg-white/30 backdrop-blur-md transition-all duration-300 shadow-lg"
-            placeholder="Your name"
-            required
+            Ready to start your project?
+          </h4>
+          
+          <a
+            href="mailto:contact@lucidcraft.studio?subject=Project Inquiry&body=Hi! I'd like to discuss a project with Lucidcraft Studio."
+            className="inline-block bg-white/30 hover:bg-white/40 text-white font-semibold rounded-lg backdrop-blur-md border border-white/50 transition-all duration-300 hover-lift shadow-lg hover:shadow-xl"
             style={{ 
               fontFamily: '"Inter", sans-serif',
-              padding: '12px 16px',
-              height: '48px',
-              marginTop: '10px'
+              textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+              padding: '16px 32px',
+              textDecoration: 'none',
+              marginBottom: '20px'
             }}
-          />
+          >
+            Email Us: contact@lucidcraft.studio
+          </a>
         </div>
         
-        <div style={{ marginTop: '20px' }}>
-          <label 
-            htmlFor="email" 
-            className="block text-white text-sm font-medium mb-2"
+        <div className="text-center mt-6">
+          <p 
+            className="text-white/80 text-sm"
             style={{ 
               fontFamily: '"Inter", sans-serif',
               textShadow: '0 1px 2px rgba(0,0,0,0.5)'
             }}
           >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="w-full bg-white/20 border border-white/40 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 focus:bg-white/30 backdrop-blur-md transition-all duration-300 shadow-lg"
-            placeholder="your@email.com"
-            required
-            style={{ 
-              fontFamily: '"Inter", sans-serif',
-              padding: '12px 16px',
-              height: '48px',
-              marginTop: '10px'
-            }}
-          />
+            Click the button above to open your email client with a pre-filled message,<br />
+            or send us an email directly at contact@lucidcraft.studio
+          </p>
         </div>
-        
-        <div style={{ marginTop: '20px' }}>
-          <label 
-            htmlFor="message" 
-            className="block text-white text-sm font-medium mb-2"
-            style={{ 
-              fontFamily: '"Inter", sans-serif',
-              textShadow: '0 1px 2px rgba(0,0,0,0.5)'
-            }}
-          >
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleInputChange}
-            rows={4}
-            className="w-full bg-white/20 border border-white/40 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 focus:bg-white/30 backdrop-blur-md transition-all duration-300 resize-none shadow-lg"
-            placeholder="Tell us about your project..."
-            required
-            style={{ 
-              fontFamily: '"Inter", sans-serif',
-              padding: '12px 16px',
-              marginTop: '10px'
-            }}
-          />
-        </div>
-        
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-white/30 hover:bg-white/40 text-white font-semibold rounded-lg backdrop-blur-md border border-white/50 transition-all duration-300 hover-lift disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-          style={{ 
-            fontFamily: '"Inter", sans-serif',
-            textShadow: '0 1px 2px rgba(0,0,0,0.3)',
-            padding: '16px 32px',
-            height: '56px',
-            marginTop: '20px'
-          }}
-        >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
-    
-        {/* Status Messages */}
-        {submitStatus === 'success' && (
-          <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-100 text-center animate-fade-in">
-            Message sent successfully! We'll get back to you soon.
-          </div>
-        )}
-        
-        {submitStatus === 'error' && (
-          <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-100 text-center animate-fade-in">
-            There was an error sending your message. Please try again.
-          </div>
-        )}
-      </form>
+      </div>
       
       {/* Extra bottom spacing for mobile */}
       <div className="h-16 md:h-0"></div>
