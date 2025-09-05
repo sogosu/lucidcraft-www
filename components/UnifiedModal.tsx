@@ -47,7 +47,7 @@ function ContactForm() {
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -187,7 +187,7 @@ function ContactForm() {
         {/* Status Messages */}
         {submitStatus === 'success' && (
           <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-100 text-center animate-fade-in">
-            Message sent successfully! We'll get back to you soon.
+            Message sent successfully! We&apos;ll get back to you soon.
           </div>
         )}
         

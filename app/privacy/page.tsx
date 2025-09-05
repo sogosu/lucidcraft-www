@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from "next/link";
 import ContactModal from "../../components/ContactModal";
 
@@ -46,14 +47,18 @@ export default function PrivacyPage() {
             <div className="flex flex-col items-center animate-scale-in">
               {/* Icon part */}
               <div className="flex items-center mb-2">
-                <img 
+                <Image 
                   src="/logo-left.svg" 
                   alt="" 
+                  width={31}
+                  height={62}
                   className="h-[62px] w-[31px]"
                 />
-                <img 
+                <Image 
                   src="/logo-right.svg" 
                   alt="" 
+                  width={31}
+                  height={62}
                   className="h-[62px] w-[31px] scale-x-[-1]"
                 />
               </div>
@@ -129,7 +134,7 @@ export default function PrivacyPage() {
                     textAlign: 'left'
                   }}
                 >
-                  Lucidcraft Studio, Inc. ("we," "our," or "us") collects information you provide directly 
+                  Lucidcraft Studio, Inc. (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects information you provide directly 
                   to us, such as when you contact us, sign up for our services, or otherwise interact with us.
                 </p>
               </section>

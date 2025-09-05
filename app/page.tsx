@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import UnifiedModal, { ModalType } from '../components/UnifiedModal';
 
 export default function Home() {
@@ -33,14 +34,18 @@ export default function Home() {
             <div className="flex flex-col items-center animate-scale-in">
               {/* Icon part */}
               <div className="flex items-center mb-2">
-                <img 
+                <Image 
                   src="/logo-left.svg" 
                   alt="" 
+                  width={31}
+                  height={62}
                   className="h-[62px] w-[31px]"
                 />
-                <img 
+                <Image 
                   src="/logo-right.svg" 
                   alt="" 
+                  width={31}
+                  height={62}
                   className="h-[62px] w-[31px] scale-x-[-1]"
                 />
               </div>

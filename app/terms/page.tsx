@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from "next/link";
 import ContactModal from "../../components/ContactModal";
 
@@ -46,14 +47,18 @@ export default function TermsPage() {
             <div className="flex flex-col items-center animate-scale-in">
               {/* Icon part */}
               <div className="flex items-center mb-2">
-                <img 
+                <Image 
                   src="/logo-left.svg" 
                   alt="" 
+                  width={31}
+                  height={62}
                   className="h-[62px] w-[31px]"
                 />
-                <img 
+                <Image 
                   src="/logo-right.svg" 
                   alt="" 
+                  width={31}
+                  height={62}
                   className="h-[62px] w-[31px] scale-x-[-1]"
                 />
               </div>
@@ -129,8 +134,8 @@ export default function TermsPage() {
                     textAlign: 'left'
                   }}
                 >
-                  By accessing or using the services provided by Lucidcraft Studio, Inc. ("Company," "we," "our," or "us"), 
-                  you agree to be bound by these Terms of Service ("Terms").
+                  By accessing or using the services provided by Lucidcraft Studio, Inc. (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), 
+                  you agree to be bound by these Terms of Service (&quot;Terms&quot;).
                 </p>
               </section>
               

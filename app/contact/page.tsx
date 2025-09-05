@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from "next/link";
 
 export default function ContactPage() {
@@ -39,7 +40,7 @@ export default function ContactPage() {
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -82,14 +83,18 @@ export default function ContactPage() {
             <div className="flex flex-col items-center animate-scale-in">
               {/* Icon part */}
               <div className="flex items-center mb-2">
-                <img 
+                <Image 
                   src="/logo-left.svg" 
                   alt="" 
+                  width={31}
+                  height={62}
                   className="h-[62px] w-[31px]"
                 />
-                <img 
+                <Image 
                   src="/logo-right.svg" 
                   alt="" 
+                  width={31}
+                  height={62}
                   className="h-[62px] w-[31px] scale-x-[-1]"
                 />
               </div>
@@ -133,7 +138,7 @@ export default function ContactPage() {
                     marginBottom: '60px'
                   }}
                 >
-                  If you have an idea for an app, or have a business opportunity you would like to explore with us, we'd love to hear from you.
+                  If you have an idea for an app, or have a business opportunity you would like to explore with us, we&apos;d love to hear from you.
                 </p>
               </div>
 
@@ -281,7 +286,7 @@ export default function ContactPage() {
                     {/* Status Messages */}
                     {submitStatus === 'success' && (
                       <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-100 text-center animate-fade-in">
-                        Message sent successfully! We'll get back to you soon.
+                        Message sent successfully! We&apos;ll get back to you soon.
                       </div>
                     )}
                     
