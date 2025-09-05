@@ -27,6 +27,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check if SMTP configuration is available in production
+    if (process.env.NODE_ENV === 'production' && (!process.env.SMTP_USER || !process.env.SMTP_PASS)) {
+      console.error('SMTP configuration missing in production');
+      return NextResponse.json(
+        { error: 'Email service is not configured. Please contact us directly at jerome@lucidcraft.studio' },
+        { status: 503 }
+      );
+    }
+
     // Create transporter (you'll need to configure this with your email provider)
     // For now, this is a placeholder - you'll need to add actual SMTP credentials
     const transporter = nodemailer.createTransport({
@@ -90,6 +99,13 @@ This message was sent from the Lucidcraft Studio website contact form.
 
   } catch (error) {
     console.error('Error sending email:', error);
+    console.error('Environment check:', {
+      NODE_ENV: process.env.NODE_ENV,
+      SMTP_HOST: process.env.SMTP_HOST ? 'SET' : 'MISSING',
+      SMTP_PORT: process.env.SMTP_PORT ? 'SET' : 'MISSING',
+      SMTP_USER: process.env.SMTP_USER ? 'SET' : 'MISSING',
+      SMTP_PASS: process.env.SMTP_PASS ? 'SET' : 'MISSING',
+    });
     
     // For development/testing without SMTP configured
     if (process.env.NODE_ENV === 'development') {
@@ -105,8 +121,12 @@ This message was sent from the Lucidcraft Studio website contact form.
       );
     }
     
+    // Better error message for production
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Production error details:', errorMessage);
+    
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: 'Failed to send email. Please try again or contact us directly at jerome@lucidcraft.studio' },
       { status: 500 }
     );
   }
