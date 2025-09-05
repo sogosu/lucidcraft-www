@@ -96,9 +96,19 @@ Lucidcraft Studio website - A pixel-perfect implementation of the Figma design w
 - **Validation**: Email format validation and required field checks
 - **Destination**: Emails sent to `jerome@lucidcraft.studio`
 
+### Environment Variables
+For contact form functionality in production:
+```
+SMTP_HOST=your-smtp-host
+SMTP_PORT=587
+SMTP_USER=your-email@domain.com
+SMTP_PASS=your-app-password
+```
+
 ### Important Notes
 - Always run visual tests after UI changes: `npx playwright test tests/visual.spec.ts`
 - Update screenshot baselines when design changes are intentional: `npx playwright test --update-snapshots`
 - Ensure all pages pass responsive tests before deployment
 - Contact form must include proper validation and error handling
 - Privacy Policy and Terms of Service pages required for Apple Developer compliance
+- The website uses Turbopack for faster builds in both development and production

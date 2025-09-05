@@ -573,8 +573,8 @@ export default function UnifiedModal({ isOpen, onClose, type }: UnifiedModalProp
       />
       
       {/* Modal fills entire viewport */}
-      <div className="flex items-center justify-center min-h-screen p-4">
-        <div className="relative w-full max-w-4xl max-h-[85vh] rounded-[32px] overflow-hidden">
+      <div className="flex items-center justify-center h-screen md:min-h-screen p-0 md:p-4">
+        <div className="relative w-full h-full md:max-w-4xl md:h-auto md:max-h-[85vh] rounded-none md:rounded-[32px] overflow-hidden">
           {/* Close button */}
           <button
             onClick={handleClose}
@@ -592,9 +592,9 @@ export default function UnifiedModal({ isOpen, onClose, type }: UnifiedModalProp
           </button>
 
           {/* Content container with scrolling inside */}
-          <div className="flex flex-col h-full max-h-[85vh] px-6 md:px-10 py-2 md:py-2">
+          <div className="flex flex-col h-full md:max-h-[85vh] px-0 md:px-6 md:px-10 py-0 md:py-2">
             <div 
-              className="bg-white/10 backdrop-blur-md rounded-[32px] border border-white/20 shadow-lg flex-1 flex flex-col min-h-0"
+              className="bg-white/10 backdrop-blur-md rounded-none md:rounded-[32px] border-0 md:border md:border-white/20 shadow-lg flex-1 flex flex-col min-h-0 h-full"
               style={{
                 padding: '20px 24px 4px 24px'
               }}
