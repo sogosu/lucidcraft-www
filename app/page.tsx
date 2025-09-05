@@ -39,22 +39,21 @@ export default function Home() {
                   alt="" 
                   width={31}
                   height={62}
-                  className="h-[62px] w-[31px]"
+                  className="h-[50px] w-[25px] md:h-[62px] md:w-[31px]"
                 />
                 <Image 
                   src="/logo-right.svg" 
                   alt="" 
                   width={31}
                   height={62}
-                  className="h-[62px] w-[31px] scale-x-[-1]"
+                  className="h-[50px] w-[25px] md:h-[62px] md:w-[31px] scale-x-[-1]"
                 />
               </div>
               {/* Text part */}
               <div 
-                className="text-white font-bold"
+                className="text-white font-bold text-[35px] md:text-[44px]"
                 style={{
                   fontFamily: '"Satoshi Variable", sans-serif',
-                  fontSize: '43.717px',
                   fontStyle: 'normal',
                   fontWeight: 700,
                   lineHeight: 'normal',
@@ -68,9 +67,8 @@ export default function Home() {
           
           {/* Headline with responsive classes */}
           <div 
-            className="flex flex-col justify-center text-center text-white"
+            className="flex flex-col justify-center text-center text-white headline-container"
             style={{
-              marginTop: '190px',
               marginLeft: '5% !important',
               marginRight: '5% !important'
             }}

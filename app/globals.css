@@ -217,4 +217,15 @@ a {
       margin-top: 40px !important;
     }
   }
+
+  /* Main page headline responsive spacing */
+  .headline-container {
+    margin-top: 138px !important;
+  }
+
+  @media (min-width: 768px) {
+    .headline-container {
+      margin-top: 184px !important;
+    }
+  }
 }

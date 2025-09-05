@@ -187,7 +187,7 @@ function ContactForm() {
         {/* Status Messages */}
         {submitStatus === 'success' && (
           <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-100 text-center animate-fade-in">
-            Message sent successfully! We&apos;ll get back to you soon.
+            Message sent successfully! We'll get back to you soon.
           </div>
         )}
         
@@ -197,6 +197,9 @@ function ContactForm() {
           </div>
         )}
       </form>
+      
+      {/* Extra bottom spacing for mobile */}
+      <div className="h-16 md:h-0"></div>
     </div>
   );
 }
@@ -532,7 +535,7 @@ export default function UnifiedModal({ isOpen, onClose, type }: UnifiedModalProp
       case 'contact':
         return {
           title: 'Get in Touch',
-          subtitle: "If you have an idea for an app, or have a business opportunity you would like to explore with us, we&apos;d love to hear from you."
+          subtitle: "If you have an idea for an app, or have a business opportunity you would like to explore with us, we'd love to hear from you."
         };
       case 'privacy':
         return {
@@ -629,12 +632,14 @@ export default function UnifiedModal({ isOpen, onClose, type }: UnifiedModalProp
 
                 {/* Scrollable content area */}
                 <div 
-                  className="flex-1 overflow-y-auto min-h-0"
+                  className="flex-1 overflow-y-auto overflow-x-hidden min-h-0"
                   id="modal-content-scroll"
                   style={{
                     scrollbarWidth: 'thin',
                     scrollbarColor: 'rgba(255,255,255,0.5) transparent',
-                    paddingBottom: '30px'
+                    paddingBottom: '50px',
+                    maxHeight: 'calc(100vh - 120px)',
+                    WebkitOverflowScrolling: 'touch'
                   }}
                 >
                   {renderContent()}
